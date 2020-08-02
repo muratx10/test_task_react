@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import classes from './App.module.scss';
+import HeaderComponent from './components/header';
+import Lists from './containers/lists/Lists.container';
+import ReduxDevTools from './utils/reduxDevTool';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.app}>
+      <BrowserRouter>
+        <HeaderComponent />
+        <ReduxDevTools />
+        <Switch>
+          <Route path='/' component={Lists} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
