@@ -11,6 +11,9 @@
 
 .btnActive, .btnDisable {
   position: fixed;
+  top: 70px;
+  left: 15px;
+  width: 200px;
   margin: 30px 0 0;
   padding: 10px 20px;
   transition: 200ms;
@@ -39,9 +42,9 @@
 }
 
 .tooltip {
-  font-size: 1.2rem;
   position: fixed;
   left: 15px;
+  width: 200px;
   padding: 10px;
   text-align: center;
   color: gray;
