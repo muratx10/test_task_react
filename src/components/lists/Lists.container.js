@@ -10,8 +10,8 @@ const Lists = (history) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadData('https://rickandmortyapi.com/api/character'));
-  }, [dispatch])
+    if (state.results.length === 0) dispatch(loadData('https://rickandmortyapi.com/api/character'));
+  }, [dispatch, state.length, state.results.length])
 
   useScroll(loadMoreData(state.next));
 
