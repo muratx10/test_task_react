@@ -12,6 +12,10 @@
     font-size: 4em;
   }
 
+  @media (max-width: 576px) {
+    margin-top: 80px;
+  }
+
   @media (max-width: 505px) {
     font-size: 3em;
   }
@@ -35,7 +39,10 @@
   }
 
   @media (max-width: 756px) {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
 

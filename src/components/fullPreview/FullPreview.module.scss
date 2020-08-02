@@ -13,17 +13,34 @@
   display: grid;
   align-items: center;
   grid: 1fr / repeat(2, 1fr);
-  grid-template-areas: 'image name' 'image gender' 'image species' 'image status' 'image location';
   justify-items: center;
+
+  @media (max-width: 576px) {
+    grid: repeat(2, 1fr) / 1fr;
+  }
 
   .image {
     width: 300px;
     border-radius: 7px;
-    grid-area: image;
+
+    @media (max-width: 576px) {
+      width: 250px;
+    }
   }
 
-  .name {
-    font-size: 3rem;
-    margin: 0;
+  .description {
+    @media (max-width: 576px) {
+      padding: 0 25px;
+    }
+
+
+    .name {
+      font-size: 3rem;
+      margin: 0;
+
+      @media (max-width: 576px) {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
