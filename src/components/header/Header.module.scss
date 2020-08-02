@@ -8,3 +8,43 @@
   0 24px 2px rgba(0, 0, 0, 0.1),
   0 24px 30px rgba(0, 0, 0, 0.1);
 }
+
+.btnActive, .btnDisable {
+  position: fixed;
+  margin: 30px 0 0;
+  padding: 10px 20px;
+  transition: 200ms;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 10px;
+
+
+  &:hover {
+    color: #FFF;
+    background: #000;
+  }
+}
+
+.btnDisable {
+  cursor: not-allowed;
+  opacity: 40%;
+  color: lighten(#000, 40%);
+  border-color: lighten(#000, 40%);
+
+  &:hover {
+    color: lighten(#000, 40%);
+    background: unset;
+  }
+}
+
+.tooltip {
+  font-size: 1.2rem;
+  position: fixed;
+  left: 15px;
+  padding: 10px;
+  text-align: center;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 15px;
+}

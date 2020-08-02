@@ -36,7 +36,6 @@ const useScroll = (action) => {
     setScrollDirection(lastScrollTop > -bodyOffset.top ? 'down' : 'up')
     setLastScrollTop(-bodyOffset.top)
     if (((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
-      console.log('you\'re at the bottom of the page');
       if (!isLoading) dispatch(action);
     }
   }

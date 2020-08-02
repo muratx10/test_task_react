@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router';
 import { loadData, loadMoreData } from '../../store/actions/actionCreators';
-import List from '../../components/list';
 import useScroll from '../../utils/useScroll';
+import List from '../list';
 
-const Lists = () => {
+const Lists = (history) => {
   const state = useSelector(state => state, shallowEqual);
   const dispatch = useDispatch();
 
@@ -15,8 +16,11 @@ const Lists = () => {
   useScroll(loadMoreData(state.next));
 
   return (
-    state.results.map(item => <List val={item.name} key={item.id} />)
+    state.results.map(item => <List
+      item={item}
+      key={item.id}
+    />)
   )
 };
 
-export default Lists;
+export default withRouter(Lists);

@@ -1,0 +1,29 @@
+
+.alive {
+  color: green;
+}
+
+.dead {
+  color: red;
+}
+
+.character {
+  font-family: 'Maven Pro', sans-serif;
+  font-size: 1.6rem;
+  display: grid;
+  align-items: center;
+  grid: 1fr / repeat(2, 1fr);
+  grid-template-areas: 'image name' 'image gender' 'image species' 'image status' 'image location';
+  justify-items: center;
+
+  .image {
+    width: 300px;
+    border-radius: 7px;
+    grid-area: image;
+  }
+
+  .name {
+    font-size: 3rem;
+    margin: 0;
+  }
+}

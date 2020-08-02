@@ -1,11 +1,12 @@
 import React from 'react';
+import Loader from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import classes from './App.module.scss';
+import FullPreview from './components/fullPreview';
 import HeaderComponent from './components/header';
-import Lists from './containers/lists/Lists.container';
+import Lists from './components/lists';
 import ReduxDevTools from './utils/reduxDevTool';
-import Loader from 'react-loader-spinner';
 
 const App = () => {
   const state = useSelector(state => state);
@@ -15,7 +16,8 @@ const App = () => {
         <HeaderComponent />
         <ReduxDevTools />
         <Switch>
-          <Route path='/' component={Lists} />} />
+          <Route exact path='/' component={Lists} />
+          <Route path='/characters/:characterId' component={FullPreview} />
         </Switch>
         {
           state.isLoading ?

@@ -1,8 +1,10 @@
 const fetchList = async (url) => {
-  const rawData = await fetch(url);
-  const data = await rawData.json();
-  console.log(data);
-  return data;
+  try {
+    const rawData = await fetch(url);
+    return await rawData.json();
+  } catch (e) {
+    console.error(e.message);
+  }
 };
 
 export default fetchList;
