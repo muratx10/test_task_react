@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import { rootReducer } from './reducers/rootReducer';
-import sagaWatcher from './sagas/sagas';
-import ReduxDevTools from './utils/reduxDevTool';
+import { reducer } from './reducers/reducer';
+import { sagaWatcher } from './sagas/sagas';
+import ReduxDevTools from '../utils/reduxDevTool';
 import createSagaMiddleware from 'redux-saga';
 
 const logger = store => action => next => {
@@ -11,7 +11,7 @@ const logger = store => action => next => {
 }
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, compose(applyMiddleware(logger, sagaMiddleware), ReduxDevTools.instrument()));
+const store = createStore(reducer, compose(applyMiddleware(logger, sagaMiddleware), ReduxDevTools.instrument()));
 
 sagaMiddleware.run(sagaWatcher);
 // const store = createStore(rootReducer, compose(applyMiddleware(logger), ReduxDevTools.instrument()));
