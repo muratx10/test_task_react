@@ -16,9 +16,7 @@ const Lists = (history) => {
   useScroll(loadMoreData(state.next));
 
   return (
-    state.results.map(item => <List
-      item={item}
-      key={item.id}
+    state.results.map(item => < List item={item} key={item.id}
     />)
   )
 };

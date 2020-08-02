@@ -26,7 +26,7 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         results: [...action.payload.results],
-        next: action.payload.info.next,
+        next: action.payload.info.next ? action.payload.info.next : '',
         isLoading: false,
         error: '',
       };
@@ -49,7 +49,7 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         results: [...results, ...newData],
-        next: next,
+        next: next ? next : '',
         error: '',
         isLoading: false,
       };
