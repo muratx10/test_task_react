@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Loader from 'react-loader-spinner';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -13,9 +13,11 @@ const App = () => {
   const state = useSelector(state => state, shallowEqual);
   const dispatch = useDispatch();
 
+  const stableDispatch = useCallback(dispatch, []);
+
   useEffect(() => {
-    dispatch(loadData('https://rickandmortyapi.com/api/character'));
-  }, [dispatch])
+    stableDispatch(loadData('https://rickandmortyapi.com/api/character'));
+  }, [stableDispatch])
 
   return (
     <div className={classes.app}>
