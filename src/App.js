@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Loader from 'react-loader-spinner';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import classes from './App.module.scss';
 import FullPreview from './components/fullPreview';
 import HeaderComponent from './components/header';
 import Lists from './components/lists';
+import { loadData } from './store/actions/actionCreators';
 import ReduxDevTools from './utils/reduxDevTool';
 
 const App = () => {
-  const state = useSelector(state => state);
+  const state = useSelector(state => state, shallowEqual);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadData('https://rickandmortyapi.com/api/character'));
+  }, [dispatch])
+
   return (
     <div className={classes.app}>
       <BrowserRouter>
