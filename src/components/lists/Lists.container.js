@@ -26,7 +26,7 @@ useEffect(() => {
   const node = document.querySelectorAll('[class*="List_character"]');
   if(node.length > 0) observer.observe(node[node.length -1]);
 
-}, [state]);
+}, [state, observer]);
 
   // const listener = () => {
   //   if (((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
