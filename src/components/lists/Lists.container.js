@@ -8,19 +8,39 @@ const Lists = () => {
   const state = useSelector(state => state, shallowEqual);
   const dispatch = useDispatch();
 
-  const listener = () => {
-    if (((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
-      if (!state.isLoading && loadMoreData(state.next)) dispatch(loadMoreData(state.next));
-    }
-  }
+  
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        if (!state.isLoading && loadMoreData(state.next)) dispatch(loadMoreData(state.next));
+        observer.unobserve(entry.target);
+      };
+    })
+}, {
+  root: null,
+  rootMargin: '0px',
+  threshold: 1
+})
 
-  useEffect(() => {
-    window.addEventListener('scroll', listener)
+useEffect(() => {
+  const node = document.querySelectorAll('[class*="List_character"]');
+  if(node.length > 0) observer.observe(node[node.length -1]);
 
-    return () => {
-      window.removeEventListener('scroll', listener)
-    }
-  })
+}, [state]);
+
+  // const listener = () => {
+  //   if (((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
+  //     if (!state.isLoading && loadMoreData(state.next)) dispatch(loadMoreData(state.next));
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   window.addEventListener('scroll', listener)
+
+  //   return () => {
+  //     window.removeEventListener('scroll', listener)
+  //   }
+  // })
 
   return (
     state.results.map(item => < List item={item} key={item.id}

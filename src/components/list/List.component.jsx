@@ -8,6 +8,7 @@ const List = ({item}) => {
   const handleClick = () => {
     history.push(`/characters/${item.id}`);
   }
+  
 
   return (
     <div

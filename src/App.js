@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     stableDispatch(loadData('https://rickandmortyapi.com/api/character'));
-  }, [stableDispatch])
+  }, [stableDispatch]);
 
   return (
     <div className={classes.app}>
