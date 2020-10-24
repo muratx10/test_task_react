@@ -28,19 +28,6 @@ useEffect(() => {
 
 }, [state, observer]);
 
-  // const listener = () => {
-  //   if (((window.innerHeight + window.scrollY) >= document.body.offsetHeight)) {
-  //     if (!state.isLoading && loadMoreData(state.next)) dispatch(loadMoreData(state.next));
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', listener)
-
-  //   return () => {
-  //     window.removeEventListener('scroll', listener)
-  //   }
-  // })
 
   return (
     state.results.map(item => < List item={item} key={item.id}
